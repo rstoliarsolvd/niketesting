@@ -21,7 +21,7 @@ public class HomePageTest {
     private static final Logger LOGGER = (Logger) LoggerFactory.getLogger(HomePageTest.class);
     private WebDriver driver;
 
-
+//New branch!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //    @BeforeMethod
 //    public void setUp() {
 //        System.setProperty("webdriver.chrome.driver", "/Users/rstoliar/Downloads/chromedriver");
