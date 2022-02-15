@@ -31,7 +31,7 @@ public class NikeHomePage {
         driver.findElement(By.cssSelector("#VisualSearchInput")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
-        driver.findElement(By.cssSelector("#VisualSearchInput")).sendKeys("Jordan");
+        driver.findElement(By.cssSelector("#VisualSearchInput")).sendKeys("run");
         driver.findElement(By.cssSelector(".pre-search-input-icon")).click();
 
         driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
@@ -48,12 +48,13 @@ public class NikeHomePage {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
 
-
-        driver.findElement(By.cssSelector("a[data-path='sign up for email']]")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        driver.findElement(By.cssSelector(".nike-unite-text-input.emailAddress.nike-unite-component.empty"))
-//                .sendKeys("gogo.go@go.by");
+//        driver.findElement(By.cssSelector("a[aria-label='Men']")).
+//
+//        driver.findElement(By.cssSelector("a[data-path='sign up for email']")).click();
 //        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+////        driver.findElement(By.cssSelector(".nike-unite-text-input.emailAddress.nike-unite-component.empty"))
+////                .sendKeys("gogo.go@go.by");
+////        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         driver.quit();
     }
