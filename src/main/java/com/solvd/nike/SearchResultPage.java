@@ -8,21 +8,24 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class SearchResultPage {
-public WebDriver driver;
+    public WebDriver driver;
 
-@FindBy(css = "a[href*='run']")
-//    @FindBy(css = "div.product-grid__items.css-yj4gxb.css-r6is66.css-zndamd.css-1tlbipz")
-//@FindBy(css = "div.product-card__subtitle[role='link']")
-private List<WebElement> runSearchResultList;
+    @FindBy(css = "a[href*='run']")
+    private List<WebElement> runSearchResultList;
 
     @FindBy(css = "a[aria-label='Nike Homepage']")
     private WebElement homeButton;
 
+    @FindBy(css = "button[aria-label='Close Menu'] .g72-x-circle.fs32-nav-sm.nav-color-black")
+    private WebElement closeLocatorMenuButton;
+
 
     public SearchResultPage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
         this.driver = driver;
-        this.driver.get(driver.getCurrentUrl());
+//        this.driver.get("https://nike.com/ca");
+        this.driver.get("https://www.nike.com/ca/w?q=run&vst=run");
+
     }
 
     public List<WebElement> getRunSearchResultList() {
@@ -31,5 +34,9 @@ private List<WebElement> runSearchResultList;
 
     public WebElement getHomeButton() {
         return homeButton;
+    }
+
+    public WebElement getCloseLocatorMenuButton() {
+        return closeLocatorMenuButton;
     }
 }
