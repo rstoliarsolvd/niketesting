@@ -83,6 +83,9 @@ public class StartPage {
     @FindBy(css = "a[role='menuitem'].body-3[href='https://www.nike.com/ca/w/mens-shoes-nik1zy7ok']")
     private WebElement menuMenAllShoesBar;
 
+    @FindBy(css = ".body-4.d-lg-flx.flx-ai-lg-c.u-bold.ml2-sm.mr2-sm")
+    private  WebElement joinUpTopBar;
+
 
 
 
@@ -182,5 +185,9 @@ public class StartPage {
 
     public WebElement getMenuMenAllShoesBar() {
         return menuMenAllShoesBar;
+    }
+
+    public WebElement getJoinUpTopBar() {
+        return joinUpTopBar;
     }
 }

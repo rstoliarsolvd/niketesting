@@ -14,7 +14,7 @@ public class MenShoesFilterPage {
     private WebElement shopByPriceCheckBox;
 
     @FindBy(css = ".product-price.css-11s12ax.is--current-price")
-    private List<WebElement> shoesShoosUnder75;
+    private List<WebElement> shoesChooseUnder75;
 
 
     public MenShoesFilterPage(WebDriver driver) {
@@ -27,8 +27,8 @@ public class MenShoesFilterPage {
         return shopByPriceCheckBox;
     }
 
-    public List<WebElement> getShoesShoosUnder75() {
-        return shoesShoosUnder75;
+    public List<WebElement> getShoesChooseUnder75() {
+        return shoesChooseUnder75;
     }
 
 }

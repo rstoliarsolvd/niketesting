@@ -1,11 +1,7 @@
-import com.solvd.nike.HelpPage;
-import com.solvd.nike.MenShoesFilterPage;
-import com.solvd.nike.StartPage;
-import org.openqa.selenium.By;
+import com.solvd.nike.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,11 +9,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import java.awt.*;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class StartPageTest {
 
@@ -49,68 +43,9 @@ public class StartPageTest {
         driver.quit();
     }
 
-    //    @Test
-//    /**
-//     (description = "Check 'sign up for email' form  for correct input work'", "password has to meet :
-//     Minimum of 8 characters 1 uppercase letter 1 lowercase letter 1 number")
-//     @TestRailCases(testCasesId = "3")
-//     @MethodOwner(owner = "rstoliar", platform = "web")
-//     */
-//    public void checkSignUpFormTest() {
-//
-//        StartPage startPage = new StartPage(driver);
-//        startPage.getLocationCanadaEnglBar().click();
-//        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-//
-//        startPage.getSignUpForEmailBar().click();
-//        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
-//        driver.get("https://www.nike.com/ca/email-signup");
-//
-//        startPage.getEmailAddressField().click();
-//        startPage.getEmailAddressField().sendKeys("2gogo.tut@go.com");
-//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        startPage.getDobField().click();
-//        startPage.getDobField().sendKeys("02.04.1990");
-//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        startPage.getSelectGenderSelect().click();
-//        startPage.getMenGenderSelect().click();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        startPage.getSignUpFistWindowButton().click();
-//
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-////        startPage.getCloseFistWindowButton().click();
-//        System.out.println(driver.getCurrentUrl().compareTo("https://www.nike.com/ca/"));
-//        System.out.println(driver.getCurrentUrl());
-//        System.out.println("driver.getCurrentUrl().toString().equals(\"https://www.nike.com/ca/\") = " + driver.getCurrentUrl().toString().equals("https://www.nike.com/ca/"));
-////if ()
-//
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        startPage.getSignUpSecondWindowButton().click();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        startPage.getPasswordField().click();
-//        startPage.getPasswordField().sendKeys("Go1Go.tut@121");
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        startPage.getFirstNameField().click();
-//        startPage.getFirstNameField().sendKeys("John2");
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        startPage.getLastNameField().click();
-//        startPage.getLastNameField().sendKeys("Dale2");
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        startPage.getSignUpCheckBox().click();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        startPage.getJoinUsThirdWindowButton().click();
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//
-//        driver.quit();
-//    }
     @Test
 /**
- (description = "Check input in search field and having correct result")
+ (description = "Check input 'run' in search field and having correct result")
  @TestRailCases(testCasesId = "4")
  @MethodOwner(owner = "rstoliar", platform = "web")
  */
@@ -161,7 +96,7 @@ public class StartPageTest {
 
     @Test
 /**
- (description = "Check input in search field special characters - 'incorrect input' ")
+ (description = "Check input in search field special characters - 'incorrect input'.Double times ")
  @TestRailCases(testCasesId = "11")
  @MethodOwner(owner = "rstoliar", platform = "web")
  */
@@ -233,7 +168,7 @@ public class StartPageTest {
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 
         driver.getCurrentUrl();
-//        startPage.getQuickStartQuestion().click();
+
         HelpPage helpPage = new HelpPage(driver);
         helpPage.getQuickStartQuestion().click();
 
@@ -262,7 +197,7 @@ public class StartPageTest {
         startPage.getMenuMenButton().click();
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
-        softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT),"https://www.nike.com/ca/men");
+        softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT), "https://www.nike.com/ca/men");
 
         driver.quit();
     }
@@ -290,8 +225,8 @@ public class StartPageTest {
 
         startPage.getMenuMenAllShoesBar().click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT),"https://www.nike.com/ca/w/mens-shoes-nik1zy7ok");
-       driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
+        softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT), "https://www.nike.com/ca/w/mens-shoes-nik1zy7ok");
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
         driver.quit();
     }
@@ -322,17 +257,131 @@ softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROO
 
         MenShoesFilterPage menShoesFilterPage = new MenShoesFilterPage(driver);
         menShoesFilterPage.getShopByPriceCheckBox().click();
-        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         driver.get(driver.getCurrentUrl());
 
-        Pattern p = Pattern.compile("\\d+");
-//        menShoesFilterPage.getShoesShoosUnder75().
-//                forEach(webElement -> softAssert.assertTrue(Integer.parseInt(p.matcher(webElement.getText()).group())<75));
-menShoesFilterPage.getShoesShoosUnder75()
-        .forEach(we->softAssert.assertTrue(Integer.parseInt(we.getText().replaceAll("\\D",""))<75));
+        menShoesFilterPage.getShoesChooseUnder75()
+                .forEach(we -> softAssert.assertTrue(Integer.parseInt(we.getText()
+                        .replaceAll("\\D", "")) < 75));
 
         driver.quit();
     }
 
+    @Test
+/**
+ (description = "Check the 'join us' top bar -  'Join us' page-form should open ")
+ @TestRailCases(testCasesId = "15")
+ @MethodOwner(owner = "rstoliar", platform = "web")
+ */
+    public void checkJoinUsTopBarTest() {
+
+        StartPage startPage = new StartPage(driver);
+        SoftAssert softAssert = new SoftAssert();
+
+        startPage.getLocationCanadaEnglBar().click();
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+
+        startPage.getJoinUpTopBar().click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        softAssert.assertEquals(driver.getCurrentUrl()
+                .toLowerCase(Locale.ROOT), "https://www.nike.com/ca/membership");
+
+        MembershipPage membershipPage = new MembershipPage(driver);
+        driver.get(driver.getCurrentUrl());
+        membershipPage.getJoinUsButton().click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        softAssert.assertEquals(driver.getCurrentUrl()
+                .toLowerCase(Locale.ROOT), "https://www.nike.com/ca/register");
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
+        driver.quit();
     }
+
+    @Test
+/**
+ (description = "Check the 'join us' page-form success registration / need to change email each time")
+ @TestRailCases(testCasesId = "16")
+ @MethodOwner(owner = "rstoliar", platform = "web")
+ */
+    public void checkJoinUsFormRegistrationTest() {
+
+        StartPage startPage = new StartPage(driver);
+        SoftAssert softAssert = new SoftAssert();
+
+        startPage.getLocationCanadaEnglBar().click();
+        driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
+
+        startPage.getJoinUpTopBar().click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        MembershipPage membershipPage = new MembershipPage(driver);
+        driver.get(driver.getCurrentUrl());
+        membershipPage.getJoinUsButton().click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        RegisterPage registerPage = new RegisterPage(driver);
+        driver.get(driver.getCurrentUrl());
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        if (registerPage.getLocationMessage().isDisplayed()) {
+            registerPage.getCanadaLocationMessage().click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            WebElement engLocMes = registerPage.getEnglishCanadaLocMessage();
+            boolean eng = engLocMes.getText().toLowerCase().contains("english");
+            if (eng) {
+                engLocMes.click();
+                driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            }
+        }
+
+        registerPage.getEmailInputField().click();
+        registerPage.getEmailInputField().sendKeys("2Go.Nike@by.com");
+
+        registerPage.getPasswordInputField().sendKeys("1Go.Nike");
+        registerPage.getFirstNameInputField().sendKeys("Go");
+        registerPage.getLastNameInputField().sendKeys("Nike");
+
+        if (registerPage.getLocationMessage().isDisplayed()) {
+            registerPage.getCanadaLocationMessage().click();
+            driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            WebElement engLocMes = registerPage.getEnglishCanadaLocMessage();
+            Boolean eng = engLocMes.getText().toLowerCase().contains("english");
+            if (eng) {
+                engLocMes.click();
+                driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+            }
+        }
+
+        registerPage.getDobInputField().sendKeys("01012001");
+
+
+        registerPage.getCountrySelect().click();
+        registerPage.getCanadaCountrySelect().click();
+        registerPage.getMaleButton().click();
+
+
+        registerPage.getSignUpCheckBox().click();
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+        registerPage.getJoinUsButton().click();
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+
+
+        driver.quit();
+    }
+
+
+    //    @Test
+//    /**
+//     (description = "Check 'sign up for email' form  for correct input work'", "password has to meet :
+//     Minimum of 8 characters 1 uppercase letter 1 lowercase letter 1 number")
+//     @TestRailCases(testCasesId = "3")
+//     @MethodOwner(owner = "rstoliar", platform = "web")
+//     */
+//    public void checkSignUpFormTest() {
+//
+
+
+}
