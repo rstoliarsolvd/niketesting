@@ -11,7 +11,7 @@ public class StartPage {
     @FindBy(css = "a[href='https://www.nike.com/ca/']")
     private WebElement locationCanadaEnglBar;
 
-    @FindBy(css = "#nes-localization")
+    @FindBy(css = "span.country-pin-label")
     private WebElement localisationID;
 
     @FindBy(css = "a[data-path='sign up for email']")

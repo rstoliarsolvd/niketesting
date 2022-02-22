@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -26,6 +27,10 @@ public class StartPageTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(url);
     }
+    @AfterMethod
+    public  void driverQuit(){
+        driver.quit();
+    }
 
     @Test
     /**
@@ -40,7 +45,9 @@ public class StartPageTest {
         startPage.getLocationCanadaEnglBar().click();
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
         softAssert.assertTrue(startPage.getLocalisationID().getText().contains("Canada"));
-        driver.quit();
+
+//        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -62,8 +69,9 @@ public class StartPageTest {
         startPage.getSearchField().sendKeys("run");
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         startPage.getSearchButton().click();
-        softAssert.assertTrue(driver.getCurrentUrl().toString().equals("https://www.nike.com/ca/w?q=run&vst=run"));
-        driver.quit();
+        softAssert.assertTrue(driver.getCurrentUrl().toLowerCase(Locale.ROOT).equals("https://www.nike.com/ca/w?q=run&vst=run"));
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -91,7 +99,8 @@ public class StartPageTest {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
         softAssert.assertTrue(driver.getCurrentUrl().toString().equals("https://www.nike.com/ca/"));
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -125,7 +134,8 @@ public class StartPageTest {
 
         softAssert.assertTrue(startPage.getNoResultMessage().getText().toLowerCase(Locale.ROOT)
                 .contains("could not find anything"));
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -147,7 +157,8 @@ public class StartPageTest {
 
         softAssert.assertTrue(driver.getCurrentUrl().toLowerCase(Locale.ROOT).equals("https://www.nike.com/ca/help"));
         LOGGER.debug("Test13 pass. Success");
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -177,8 +188,8 @@ public class StartPageTest {
                 .toLowerCase(Locale.ROOT).equals("https://www.nike.com/ca/help/a/refund-info-gs"));
         driver.manage().timeouts().implicitlyWait(6, TimeUnit.SECONDS);
 
-        driver.quit();
-    }
+//        driver.quit();
+        softAssert.assertAll();    }
 
     @Test
 /**
@@ -199,7 +210,8 @@ public class StartPageTest {
 
         softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT), "https://www.nike.com/ca/men");
 
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
 
@@ -228,7 +240,8 @@ public class StartPageTest {
         softAssert.assertEquals(driver.getCurrentUrl().toString().toLowerCase(Locale.ROOT), "https://www.nike.com/ca/w/mens-shoes-nik1zy7ok");
         driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -265,7 +278,8 @@ public class StartPageTest {
                 .forEach(we -> softAssert.assertTrue(Integer.parseInt(we.getText()
                         .replaceAll("\\D", "")) < 75));
 
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -297,7 +311,8 @@ public class StartPageTest {
                 .toLowerCase(Locale.ROOT), "https://www.nike.com/ca/register");
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
     @Test
@@ -369,7 +384,8 @@ public class StartPageTest {
         driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 
 
-        driver.quit();
+        //        driver.quit();
+        softAssert.assertAll();
     }
 
 

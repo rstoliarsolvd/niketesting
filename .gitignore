@@ -3,3 +3,9 @@ target/
 .idea/
 
 .DS_Store
+
+
+src/test/java/StartPageTest.java
+src/main/java/com/solvd/nike/StartPage.java
+StartPageTest.java
+StartPage.java
