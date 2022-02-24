@@ -1,12 +1,14 @@
 package com.solvd.nike;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.FileReader;
@@ -16,7 +18,7 @@ import java.util.Properties;
 
 public class HomePage {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
+    private static final Logger LOGGER = LogManager.getLogger(HomePage.class);
     WebDriver driver;
 
     private final String URL = "https://www.nike.com/";
@@ -127,6 +129,17 @@ public class HomePage {
     @FindBy(css = ".body-4.d-lg-flx.flx-ai-lg-c.u-bold.ml2-sm.mr2-sm")
     private WebElement joinUpTopBar;
 
+    @FindBy(css = "[aria-label='Men'][aria-expanded='true']")
+    private WebElement menuMenDropDown;
+
+
+    //    @FindBy(css = "a[href='https://www.nike.com/gb/']")
+    @FindBy(css = "[title='United Kingdom'][data-type='click_navCountrySelectionSuccess']")
+    private WebElement locationUnitedKingdomBar;
+
+    @FindBy(css = "a[aria-label='New Releases']")
+    private WebElement menuNewReleasesButton;
+
 
     public HomePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -144,7 +157,8 @@ public class HomePage {
     }
 
     public void clickLocationCanadaEnglBar() {
-        locationCanadaEnglBar.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(locationCanadaEnglBar)).click();
     }
 
     public String getTextLocalisationID() {
@@ -152,7 +166,8 @@ public class HomePage {
     }
 
     public Boolean containCanadaLocalID() {
-        return getTextLocalisationID().contains("canada");
+        String titleContains = "canada";
+        return getTextLocalisationID().contains(titleContains);
     }
 
     public void clickSearchField() {
@@ -178,15 +193,18 @@ public class HomePage {
     }
 
     public boolean containRunInTextSearchSugg() {
-        return getTextSearchSuggestion().contains("run");
+        String titleContains = "run";
+        return getTextSearchSuggestion().contains(titleContains);
     }
 
     public void clickSearchButton() {
-        searchButton.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(searchButton)).click();
     }
 
     public boolean searchContainTopSuggestionField() {
-        return topSuggestionNoVarSearchField.getText().toLowerCase(Locale.ROOT).contains("top suggestions");
+        String titleContains = "top suggestions";
+        return topSuggestionNoVarSearchField.getText().toLowerCase(Locale.ROOT).contains(titleContains);
     }
 
     public boolean conformationSearchPageResult() {
@@ -202,12 +220,12 @@ public class HomePage {
     }
 
     public boolean noSuchResultMessageDisplayed() {
-//        return getTextNoResultMessage().contains("find ");
         return noResultMessage.isDisplayed();
     }
 
     public void clickHelpButton() {
-        helpButton.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(helpButton));
     }
 
     public boolean helpPageDisplayed() {
@@ -215,27 +233,36 @@ public class HomePage {
     }
 
     public boolean helpPageTitleContain() {
-        return helpTitle.getText().toLowerCase(Locale.ROOT).contains("help");
+        String titleContains = "help";
+        return helpTitle.getText().toLowerCase(Locale.ROOT).contains(titleContains);
     }
 
     public void clickQuickAssistButton() {
-        quickAssistRefundButton.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(quickAssistRefundButton));
     }
 
     public boolean refundPageTitleDisplayed() {
-        return refundPageTitle.getText().toLowerCase(Locale.ROOT).contains("my refund");
+        String titleContains = "my refund";
+        return refundPageTitle.getText().toLowerCase(Locale.ROOT).contains(titleContains);
     }
 
     public void clickHomeButton() {
-        homeButton.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(homeButton));
     }
 
     public void clickMenuMenButton() {
-        menuMenButton.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(menuMenButton));
     }
 
     public boolean menPageTitleDisplayed() {
-        return menPageTitle.getText().toLowerCase(Locale.ROOT).contains("men");
+        String titleContains = "men";
+
+//        new WebDriverWait(driver,50)
+//                .until(ExpectedConditions.elementSelectionStateToBe(menGenderSelect,true));
+        return menPageTitle.getText().toLowerCase(Locale.ROOT).contains(titleContains);
     }
 
     public void moveCursorToMenMenuButton() {
@@ -244,9 +271,23 @@ public class HomePage {
     }
 
     public void clickMenuMenAllShoesBar() {
-        menuMenAllShoesBar.click();
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(menuMenAllShoesBar));
+    }
+
+    public boolean menuMenDropDownIsDisplayed() {
+        return menuMenDropDown.isDisplayed();
     }
 
 
+    public void clickUnitedKingdomBar() {
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(locationUnitedKingdomBar)).click();
+    }
+
+    public void clickMenuNewReleasesButton() {
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(menuNewReleasesButton)).click();
+    }
 
 }

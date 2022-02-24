@@ -1,24 +1,25 @@
 package com.solvd.nike;
 
-import org.openqa.selenium.By;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.asserts.SoftAssert;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
-import static org.testng.Assert.assertTrue;
-
 public class MenShoesFilterPage {
+
+    private static final String PAGEURL = "https://www.nike.com/ca/w/mens-shoes-nik1zy7ok";
+    private static final Logger LOGGER = LogManager.getLogger(MenShoesFilterPage.class);
     WebDriver driver;
 
-    @FindBy(css = "a[aria-label='Filter for $0 - $74'] .icon-checkmark.css-1iktvq5.is--toggled")
+    @FindBy(xpath = "//button[@aria-label='Filter for $0 - $74']")
     private WebElement shopByPriceCheckBox;
 
     @FindBy(css = ".product-price.css-11s12ax.is--current-price")
@@ -31,17 +32,20 @@ public class MenShoesFilterPage {
     public MenShoesFilterPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        this.driver.get("https://www.nike.com/ca/w/mens-shoes-nik1zy7ok");
+        this.driver.get(PAGEURL);
     }
 
     public boolean conformationAllShoesMenPage() {
-//        return menAllShoesPageTitle.getText().toLowerCase(Locale.ROOT).contains("men shoes");
         return menAllShoesPageTitle.isDisplayed();
     }
 
     public void clickShopByPriceCheckBox() {
-        new WebDriverWait(driver, 50).until(ExpectedConditions.elementToBeClickable(shopByPriceCheckBox)).click();
-//        shopByPriceCheckBox.click();
+
+        Actions builder = new Actions(driver);
+        builder.moveToElement(shopByPriceCheckBox).build().perform();
+
+        new WebDriverWait(driver, 50)
+                .until(ExpectedConditions.elementToBeClickable(shopByPriceCheckBox)).click();
     }
 
     public WebElement getShopByPriceCheckBox() {
@@ -51,7 +55,6 @@ public class MenShoesFilterPage {
     public List<WebElement> getShoesChooseUnder75() {
         return shoesChooseUnder75;
     }
-
 
 
     public List<Integer> getShoesPrices() {
